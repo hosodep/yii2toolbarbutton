@@ -1,0 +1,31 @@
+{
+	"name": "philippfrenzel/yii2toolbarbutton",
+	"description": "Toolbar.js for Yii2",
+	"keywords": ["yii2", "framework","yii2 jquery toolbar button"],
+	"homepage": "http://www.frenzel.net/",
+	"type": "library",
+	"license": "MIT license",
+	"authors": [
+		{
+			"name": "Philipp Frenzel",
+			"email": "philipp@frenzel.net",
+			"homepage": "http://www.frenzel.net/",
+			"role": "Author Version Yii2"
+		},
+		{
+			"name": "Paul Kinzett",
+			"homepage": "http://kinzett.co.nz/",
+			"role": "ToolbarJS Writer"
+		}
+	],
+	"support": {
+		"source": "https://github.com/philippfrenzel/yii2toolbarbutton"
+	},
+	"minimum-stability": "dev",
+	"require": {
+		"yiisoft/yii2": "*"
+	},
+	"autoload": {
+		"psr-0": { "yii2toolbarbutton\\": "/" }
+	}
+}
