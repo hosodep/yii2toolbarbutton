@@ -56,7 +56,7 @@ class yii2toolbarbutton extends Widget
     */
     public $clientOptions = array(
         'position' => 'top',
-        'hideOnClick' => true
+        'hideOnClick' => false
     );
 
     /**
