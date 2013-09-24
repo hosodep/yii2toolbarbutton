@@ -109,7 +109,7 @@ class yii2toolbarbutton extends Widget
         $options = empty($this->clientOptions) ? '' : Json::encode($this->clientOptions);
 
         $js[] = "jQuery('#$id').toolbar($options);";
-        $js[] = "jQuery('#$id').on('toolbarItemClick', function(event){ console.dir(event); $(this).trigger('click');});";
+        $js[] = "jQuery('#$id').on('toolbarItemClick', function(event){ alert($(this).attr('href'));});";
         
         $view->registerJs(implode("\n", $js),View::POS_READY);
     }
