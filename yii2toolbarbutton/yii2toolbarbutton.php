@@ -32,7 +32,8 @@ class yii2toolbarbutton extends Widget
      * ```php
      * array(
      *     // required, slide content (HTML), such as an image tag
-     *     'action' => '<img src="http://twitter.github.io/bootstrap/assets/img/bootstrap-mdo-sfmoma-01.jpg"/>',
+     *     'action' => 'site/view',
+     *     'content' => '<i class="icon-signal"></i>'
      * )
      * ```
      */
@@ -52,14 +53,10 @@ class yii2toolbarbutton extends Widget
      * can contain all configuration options
     * @var array all attributes that be accepted by the plugin, check docs!
     * visible_items
-    * scrolling_items
-    * orientation
-    * circular
-    * autoscroll
-    * interval
-    * direction
     */
     public $clientOptions = array(
+        'position' => 'top',
+        'hideOnClick' => true
     );
 
     /**
@@ -81,7 +78,9 @@ class yii2toolbarbutton extends Widget
      */
     public function run()
     {
-        echo Html::beginTag('div', $this->options) . "\n";            
+        Html::addCssClass($this->options,'icon icon-wrench');
+        echo Html::tag('i',' ',array_merge($this->options,array('style'=>'cursor: pointer'))) . "\n";
+        echo Html::beginTag('div', array('id'=>$this->options['id'].'-options','style'=>'display: none;')) . "\n";            
             echo $this->renderItems() . "\n";                    
         echo Html::endTag('div') . "\n";
         $this->registerPlugin();
@@ -102,8 +101,13 @@ class yii2toolbarbutton extends Widget
         $js = array();
         
         $className = $this->options['class'];
-        
+
+        //merge the content option into clientoptions
+        $this->clientOptions = array_merge(array(
+            'content' => '#'.$this->options['id'].'-options',
+        ), $this->options);
         $options = empty($this->clientOptions) ? '' : Json::encode($this->clientOptions);
+
         $js[] = "jQuery('#$id').toolbar($options);";
         
         $view->registerJs(implode("\n", $js),View::POS_READY);
@@ -119,7 +123,7 @@ class yii2toolbarbutton extends Widget
         for ($i = 0, $count = count($this->items); $i < $count; $i++) {
             $items[] = $this->renderItem($this->items[$i], $i);
         }
-        return Html::tag('div', implode("\n", $items), array('class' => 'als-wrapper'));
+        return implode("\n", $items);
     }
 
     /**
@@ -131,25 +135,15 @@ class yii2toolbarbutton extends Widget
      */
     public function renderItem($item, $index)
     {
-        if (is_string($item)) {
-            $content = $item;
-            $caption = null;
-        } elseif (isset($item['action'])) {
-            $content = $item['action'];
-            $caption = ArrayHelper::getValue($item, 'icon');
-            if ($caption !== null) {
-                $caption = Html::tag('i', '', array('class' => 'icon icon-wrench'));
-            }            
+        $options = array();
+        if(isset($item['action'])) {
+            $content = $item['content'];
+            $action = $item['action'];
         } else {
             throw new InvalidConfigException('The "action" option is required.');
         }
 
-        Html::addCssClass($options, 'item');
-        if ($index === 0) {
-            Html::addCssClass($options, 'active');
-        }
-
-        return Html::tag('li', $content . "\n" . $caption, array('class'=>'als-item'));
+        return Html::a($content, $action, $options);
     }
 
 }

@@ -16,7 +16,7 @@ class yii2toolbarbuttonAsset extends AssetBundle
 {
     public $sourcePath = '@yii2toolbarbutton/assets';
     public $css = array(
-        'css/jquery.toolbar.css'
+        'css/jquery.toolbars.css'
     );
     public $js = array(
         'js/jquery.toolbar.min.js'
