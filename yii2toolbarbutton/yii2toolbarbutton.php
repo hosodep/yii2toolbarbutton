@@ -16,6 +16,7 @@ use yii\base\Model;
 use yii\base\View;
 use yii\base\InvalidConfigException;
 
+use yii\web\JsExpression;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
@@ -80,7 +81,7 @@ class yii2toolbarbutton extends Widget
     {
         Html::addCssClass($this->options,'icon icon-wrench');
         echo Html::tag('i',' ',array_merge($this->options,array('style'=>'cursor: pointer'))) . "\n";
-        echo Html::beginTag('div', array('id'=>$this->options['id'].'-options','style'=>'display: none;')) . "\n";            
+        echo Html::beginTag('div', array('id'=>$this->options['id'].'-options','style'=>'display: none;','class'=>'toolbar-icons')) . "\n";            
             echo $this->renderItems() . "\n";                    
         echo Html::endTag('div') . "\n";
         $this->registerPlugin();
@@ -109,7 +110,7 @@ class yii2toolbarbutton extends Widget
         $options = empty($this->clientOptions) ? '' : Json::encode($this->clientOptions);
 
         $js[] = "jQuery('#$id').toolbar($options);";
-        $js[] = "jQuery('#$id').on('toolbarItemClick', function(event){ alert($(this).attr('href'));});";
+        $js[] = "jQuery('.tool-container').on('click','a', function() {window.location = this;});";
         
         $view->registerJs(implode("\n", $js),View::POS_READY);
     }
