@@ -3,7 +3,7 @@
 	"description": "Toolbar.js for Yii2",
 	"keywords": ["yii2", "framework","yii2 jquery toolbar button"],
 	"homepage": "http://www.frenzel.net/",
-	"type": "library",
+	"type": "yii2-extension",
 	"license": "MIT license",
 	"authors": [
 		{
