@@ -27,5 +27,8 @@
 	},
 	"autoload": {
 		"psr-0": { "yii2toolbarbutton\\": "/" }
-	}
+	},
+	"extra": {
+          "bootstrap": "yii2toolbarbutton\\Extension"
+  }
 }
