@@ -13,7 +13,7 @@ namespace yii2toolbarbutton;
 use Yii;
 
 use yii\base\Model;
-use yii\base\View;
+use yii\web\View;
 use yii\base\InvalidConfigException;
 
 use yii\web\JsExpression;
