@@ -8,7 +8,7 @@
  *
  */
 
-namespace yii2toolbarbutton;
+namespace philippfrenzel\yii2toolbarbutton;
 
 use Yii;
 

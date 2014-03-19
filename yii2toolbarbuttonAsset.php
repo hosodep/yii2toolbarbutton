@@ -4,7 +4,7 @@
  * @author Philipp Frenzel <philipp@frenzel.net> 
  */
 
-namespace yii2toolbarbutton;
+namespace philippfrenzel\yii2toolbarbutton;
 
 use yii\web\AssetBundle;
 
@@ -14,7 +14,7 @@ use yii\web\AssetBundle;
  */
 class yii2toolbarbuttonAsset extends AssetBundle
 {
-    public $sourcePath = '@yii2toolbarbutton/assets';
+    public $sourcePath = '@philippfrenzel/yii2toolbarbutton/assets';
     public $css = array(
         'css/jquery.toolbars.css'
     );

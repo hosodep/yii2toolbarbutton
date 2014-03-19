@@ -26,9 +26,7 @@
 		"yiisoft/yii2": "*"
 	},
 	"autoload": {
-		"psr-0": { "yii2toolbarbutton\\": "/" }
+		"psr-0": { "philippfrenzel\\yii2toolbarbutton\\": "" }
 	},
-	"extra": {
-          "bootstrap": "yii2toolbarbutton\\Extension"
-  }
+	"target-dir": "philippfrenzel/yii2toolbarbutton"
 }
